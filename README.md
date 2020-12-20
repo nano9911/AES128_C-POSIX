@@ -1,5 +1,17 @@
 # AES128
-AES-128 implementation in C/POSIX, multi-threaded using &lt;pthread.h>. Still learning, looking for your feedbacks.
+AES-128 [ECB && CTR] Modes implementation in C/POSIX, multi-threaded using <pthread.h>.
+
+Threads:
+
+read : read state [16 Bytes] from file to buffer1. [Producer]
+
+ecb_encrypt || ecb_decrypt || ctr_encrypt || ctr_decrypt : read state [16 Bytes] from buffer, operate on it, then move it to buffer2 [Producer & Consumer]
+
+write: read state [16 Bytes] from buffer2, write it to the output file [Consumer]
+
+Threads are oganised to work in parallel, producer consumer method, and synchronised using mutex lock.
+
+Still learning, looking for your feedbacks.
 
 To compile: gcc -pthread AES.c -o [output filename/path]
 
