@@ -15,8 +15,8 @@
 #include <pthread.h>
 #include "aes_procedures.h"
 
-#define PLAIN_FILE_NAME "plain.decrypted"
-#define CIPHER_FILE_NAME "cipher_aes.encrypted"
+#define PLAIN_FILE_NAME "output/plain.txt"
+#define CIPHER_FILE_NAME "output/encrypted.aes"
 
 #define READ_BUFF_SIZE  10
 #define WRITE_BUFF_SIZE  10
@@ -93,26 +93,26 @@ int main (int argc, char *argv[])
 		{
 			printf("**\tencrypting\t**\n\n");	optype = (int *)1;
 			pthread_t readthr, encthr, writethr;
-			pthread_create(&readthr, NULL, read, argv[3]);	printf("\n[*] read thread created");
-			pthread_create(&encthr, NULL, ecb_encrypt, NULL);		printf("\n[*] ecb_encrypt thread created");
-			pthread_create(&writethr, NULL, write, (void *)optype);		printf("\n[*] write thread created");
+			pthread_create(&readthr, NULL, read, argv[3]);
+			pthread_create(&encthr, NULL, ecb_encrypt, NULL);
+			pthread_create(&writethr, NULL, write, (void *)optype);
 
-			pthread_join(readthr, NULL);		printf("\n[*] read thread finished");
-			pthread_join(encthr, NULL);		printf("\n[*] ecb_encrypt thread finished");
-			pthread_join(writethr, NULL);	printf("\n[*] write thread finished");
+			pthread_join(readthr, NULL);
+			pthread_join(encthr, NULL);
+			pthread_join(writethr, NULL);
 		}
 
 		else if (argv[2][0] == '-' && argv[2][1] == 'd' && argv[2][2] == 0)
 		{
 			printf("**\tdecrypting\t**\n\n");	optype = (int *)2;
 			pthread_t readthr, writethr, decthr;
-			pthread_create(&readthr, NULL, read, argv[3]);	printf("\n[*] read thread created");
-			pthread_create(&decthr, NULL, ecb_decrypt, NULL);		printf("\n[*] ecb_decrypt thread created");
-			pthread_create(&writethr, NULL, write, (void *)optype);		printf("\n[*] write thread created");
+			pthread_create(&readthr, NULL, read, argv[3]);
+			pthread_create(&decthr, NULL, ecb_decrypt, NULL);
+			pthread_create(&writethr, NULL, write, (void *)optype);
 
-			pthread_join(readthr, NULL);		printf("\n[*] read thread finished");
-			pthread_join(decthr, NULL);		printf("\n[*] ecb_decrypt thread finished");
-			pthread_join(writethr, NULL);	printf("\n[*] write thread finished");
+			pthread_join(readthr, NULL);
+			pthread_join(decthr, NULL);
+			pthread_join(writethr, NULL);
 		}
 	}
 	
@@ -139,25 +139,25 @@ int main (int argc, char *argv[])
 		{
 			printf("**\tencrypting\t**\n\n");
 			pthread_t readthr, encthr, writethr;	optype = (int *)1;
-			pthread_create(&readthr, NULL, read, argv[3]);	printf("\n[*] read thread created");
-			pthread_create(&encthr, NULL, ctr_encrypt, NULL);		printf("\n[*] ctr_encrypt thread created");
-			pthread_create(&writethr, NULL, write, (void *)optype);		printf("\n[*] write thread created");
+			pthread_create(&readthr, NULL, read, argv[3]);
+			pthread_create(&encthr, NULL, ctr_encrypt, NULL);
+			pthread_create(&writethr, NULL, write, (void *)optype);
 
-			pthread_join(readthr, NULL);		printf("\n[*] read thread finished");
-			pthread_join(encthr, NULL);		printf("\n[*] ctr_encrypt thread finished");
-			pthread_join(writethr, NULL);	printf("\n[*] write thread finished");
+			pthread_join(readthr, NULL);
+			pthread_join(encthr, NULL);
+			pthread_join(writethr, NULL);
 		}
 		else if (argv[2][0] == '-' && argv[2][1] == 'd' && argv[2][2] == 0)
 		{
 			printf("**\tdecrypting\t**\n\n");	optype = (int *)2;
 			pthread_t readthr, writethr, decthr;
-			pthread_create(&readthr, NULL, read, argv[3]);	printf("\n[*] read thread created");
-			pthread_create(&decthr, NULL, ctr_decrypt, NULL);		printf("\n[*] ctr_decrypt thread created");
-			pthread_create(&writethr, NULL, write, (void *)optype);		printf("\n[*] write thread created");
+			pthread_create(&readthr, NULL, read, argv[3]);
+			pthread_create(&decthr, NULL, ctr_decrypt, NULL);
+			pthread_create(&writethr, NULL, write, (void *)optype);
 
-			pthread_join(readthr, NULL);		printf("\n[*] read thread finished");
-			pthread_join(decthr, NULL);		printf("\n[*] ctr_decrypt thread finished");
-			pthread_join(writethr, NULL);	printf("\n[*] write thread finished");
+			pthread_join(readthr, NULL);
+			pthread_join(decthr, NULL);
+			pthread_join(writethr, NULL);
 		}
 	}
 
