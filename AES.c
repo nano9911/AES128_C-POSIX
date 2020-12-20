@@ -15,8 +15,8 @@
 #include <pthread.h>
 #include "aes_procedures.h"
 
-#define PLAIN_FILE_NAME "output/plain.txt"
-#define CIPHER_FILE_NAME "output/enc.aes"
+#define PLAIN_FILE_NAME "plain.decrypted"
+#define CIPHER_FILE_NAME "cipher_aes.encrypted"
 
 #define READ_BUFF_SIZE  10
 #define WRITE_BUFF_SIZE  10
