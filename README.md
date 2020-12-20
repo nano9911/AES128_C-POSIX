@@ -13,6 +13,11 @@ Threads are oganised to work in parallel, producer consumer method, and synchron
 
 Still learning, looking for your feedbacks.
 
+
+-------------------------------------------------------------------------------------------------------
+
+Usage:
+
 To compile: gcc -pthread AES.c -o [output filename/path]
 
 Command line Arguments:
