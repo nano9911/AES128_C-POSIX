@@ -42,3 +42,19 @@ Output:
 
 if argv[2] == "-e" --> cipher_aes.ecrypted
 else if argv[2] == "-d" --> plain.decrypted
+
+
+-------------------------------------------------------------------------------------------------------
+
+
+Example:
+
+gcc -pthread AES.c -o aes
+
+aes -ecb -e plain.txt -k key.txt
+
+aes -ecb -d cipher.txt -k key.txt
+
+aes -ctr -e plain.txt -k key.txt -iv IV.txt
+
+aes -ctr -d encrypted.aes -k key.txt -iv IV.txt
