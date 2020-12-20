@@ -16,6 +16,7 @@ Still learning, looking for your feedbacks.
 
 -------------------------------------------------------------------------------------------------------
 
+
 Usage:
 
 To compile: gcc -pthread AES.c -o [output filename/path]
@@ -35,3 +36,9 @@ argv[5] = "r" [Generate Random Key] || key file name
 If argv[1] = "-ctr" :
                       argv[6] = "-iv"
                       argv[7] = "r" [Generate random IV] || IV file name
+
+
+Output:
+
+if argv[2] == "-e" --> cipher_aes.ecrypted
+else if argv[2] == "-d" --> plain.decrypted
